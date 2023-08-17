@@ -3,7 +3,8 @@ const url = require("url"); // url 모듈 로드
 const querystring = require("querystring"); // queryString 모둘 로드
 
 const members = require("./monolithic_members.js"); // 모듈을 로드
-const members = require("./monolithic_goods.js");
+const goods = require("./monolithic_goods.js");
+const purchases = require("./monolithic_purchase.js");
 
 var server = http
   .createServer((req, res) => {
@@ -39,10 +40,10 @@ function onRequest(res, method, pathname, params) {
       members.onRequest(res, method, pathname, params, response);
       break;
     case "/goods":
-      members.onRequest(res, method, pathname, params, response);
+      goods.onRequest(res, method, pathname, params, response);
       break;
     case "/purchases":
-      members.onRequest(res, method, pathname, params, response);
+      purchases.onRequest(res, method, pathname, params, response);
       break;
     default:
       res.writeHead(404);
